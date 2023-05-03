@@ -1,8 +1,8 @@
 <script setup>
 import { ref } from 'vue';
-import {photo} from "@/utils/photos";
+import { photo } from '@/utils/photos';
 
-const photos = ref(photo)
+const photos = ref(photo);
 </script>
 
 <template>
