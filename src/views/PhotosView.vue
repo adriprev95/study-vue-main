@@ -353,6 +353,7 @@ let photos = ref([
     },
 ]);
 
+let v = "v"
 let s = "s"
 </script>
 
@@ -366,24 +367,16 @@ let s = "s"
             <div v-for="photo in photos" :key="photo.id">
                 <div v-if="photo.id != 43">
                     <div v-if="!photo.title.endsWith(s)">
-                        <div v-if="photo.id % 2 == 0">
-                            <div class="flex flex-wrap md:w-80 mx-5">
-                                <img :src="photo.url" alt="" class=" photo">
-                                <div class="flex flex-wrap justify-center content-around mx-2">
-                                    <span class=" text-justify ">{{ photo.title }}</span>
-                                    <span class=" text-justify ">{{ photo.id }}</span>
-                                    <span class=" text-justify "> el id es par</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div v-else>
-                            <div class="flex flex-wrap md:w-80 mx-5">
-                                <img :src="photo.url" alt="" class=" photo">
-                                <div class="flex flex-wrap justify-center content-around mx-2">
-                                    <span class=" text-justify ">{{ photo.title }}</span>
-                                    <span class=" text-justify ">{{ photo.id }}</span>
-                                    <span class=" text-justify "> el id es impar</span>
-                                </div>
+                        <div class="flex flex-wrap md:w-80 mx-5">
+                            <img :src="photo.url" alt="" class=" photo">
+                            <div class="flex flex-wrap justify-center content-around mx-2">
+                                <span v-if="photo.title.startsWith(v)" class=" text-justify ">{{
+                                    `${photo.title.replace('accusamus', 'soy un crack')} wtf creo
+                                    que ya entendi como funciona el v-if` }}</span>
+                                <span v-else class=" text-justify ">{{ photo.title.replace('accusamus', 'soy un crack')
+                                }}</span>
+                                <span class=" text-justify ">{{ photo.id }}</span>
+                                <span class=" text-justify ">{{ photo.id % 2 == 0 ? ' Es par' : ' Es impar' }}</span>
                             </div>
                         </div>
                     </div>
