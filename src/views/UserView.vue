@@ -241,21 +241,22 @@ function delUser(id) {
 people.value = delUser*/
 </script>
 <template>
-    <div class="title w-screen md:mx-auto grid grid-rows-2 grid-flow-col gap-2 justify-center py-5">
+    <div class=" bg-blue-100 title w-screen md:mx-auto grid grid-rows-2 grid-flow-col gap-2 justify-center py-5">
         <h1 class="text-2xl">Pagina de Usuarios</h1>
         <h2>#: {{ people.length }}</h2>
     </div>
     <div>
-        <ul class="divide-gray-200 flex flex-wrap justify-around content-around">
-            <li v-for="person in people" :key="person.email" class="py-4 flex algo">
+        <ul class="divide-y divide-gray-200">
+            <li v-for="person in people" :key="person.email"
+                class="py-4 flex bg-blue-200 md:mx m-auto w-1/3 shadow-lg my-3">
                 <div class="ml-3">
-                    <p class="text-sm font-medium text-gray-900">{{ person.name }}</p>
-                    <p class="text-sm text-gray-500">{{ person.email }}</p>
-                    <p class="text-sm text-gray-500">{{ `Calle ${person.address.street}, ${person.address.suite},
-                                            ${person.address.city}, ${person.address.zipcode}` }}</p>
-                    <p class="text-sm text-gray-500">{{ ` ${person.address.geo.lat}, ${person.address.geo.lng} ` }}</p>
-                    <p class="text-sm text-gray-500">{{ ` ${person.phone}` }}</p>
-                    <p class="text-sm text-gray-500">{{ ` ${person.website}` }}</p>
+                    <p class="text-sm font-medium text-gray-950">{{ person.name }}</p>
+                    <p class="text-sm text-gray-950">{{ person.email }}</p>
+                    <p class="text-sm text-gray-950">{{ `Calle ${person.address.street}, ${person.address.suite},
+                                            ${person.address.city}, ${person.address.zipcode} Lang ${person.address.geo.lat},
+                                            ${person.address.geo.lng}` }}</p>
+                    <p class="text-sm text-gray-950">{{ ` ${person.phone}` }}</p>
+                    <p class="text-sm text-gray-950">{{ ` ${person.website}` }}</p>
                     <div>
                         <button
                             class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
@@ -273,12 +274,7 @@ people.value = delUser*/
 </template>
 <style scoped>
 .title {
-    background-color: aliceblue;
+
     height: 100px;
-}
-
-
-.algo {
-    width: 300px;
 }
 </style>
