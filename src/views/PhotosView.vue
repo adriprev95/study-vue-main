@@ -17,12 +17,9 @@ fetch('https://dummyjson.com/products').then(
         <img
           :src="product.thumbnail"
           style="width: 100%; height: 250px"
-          @click="$router.push({ name: 'product', params: { cualquiercosa: product.id } })"
+          @click="$router.push({ name: 'product', params: { id: product.id } })"
         />
       </div>
-    </div>
-    <div>
-      {{ $router }}
     </div>
   </div>
 </template>

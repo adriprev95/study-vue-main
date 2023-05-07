@@ -6,7 +6,7 @@ const route = useRoute();
 const id = route.params.id;
 /* router -> navegacion */
 
-/* route -> name */
+/* route -> name, meta, params */
 const result = ref(null);
 fetch(`https://dummyjson.com/products/${id}`).then(
   async (res) => (result.value = await res.json())
@@ -23,9 +23,6 @@ fetch(`https://dummyjson.com/products/${id}`).then(
         <img :src="result.thumbnail" />
       </div>
       <div>
-        <p>{{ $router.replace() }}</p>
-          <hr class="">
-        <p>{{ $route }}</p>
       </div>
     </div>
   </div>

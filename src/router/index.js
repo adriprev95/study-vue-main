@@ -20,7 +20,7 @@ const router = createRouter({
       component: () => import('@/views/PhotosView.vue'),
     },
     {
-      path: '/product/:cualquiercosa',
+      path: '/product/:id',
       name: 'product',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
