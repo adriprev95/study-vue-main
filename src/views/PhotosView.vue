@@ -1,67 +1,45 @@
 <script setup>
 import { ref } from 'vue';
-import { photo } from '@/utils/photos';
 
-const photos = ref(photo);
+const result = ref(null);
+fetch('https://dummyjson.com/products').then(
+  async (res) => (result.value = await res.json())
+);
 </script>
 
 <template>
-  <div
-    class="title w-screen md:mx-auto grid grid-rows-2 grid-flow-col gap-2 justify-center py-5"
-  >
-    <h1 class="text-2xl">Pagina photos</h1>
-    <h2>#: {{ photos.length }}</h2>
-  </div>
-  <div>
-    <div class="flex flex-wrap justify-center mx-5">
+  <div class="my-container">
+    <div class="my-grid-system">
       <div
-        v-for="photo in photos"
-        :key="photo.id"
+        v-for="product in result?.products"
+        :key="product.id"
       >
-        <div v-if="photo.id !== 43">
-          <div v-if="!photo.title.endsWith('s')">
-            <div class="flex flex-wrap md:w-80 mx-5">
-              <img
-                :src="photo.url"
-                alt=""
-                class="photo"
-              />
-              <div class="flex flex-wrap justify-center content-around mx-2">
-                <span
-                  v-if="photo.title.startsWith('v')"
-                  class="text-justify"
-                >
-                  {{
-                    `${photo.title.replace('accusamus', 'soy un crack')}
-                    wtf creo que ya entendi como funciona el v-if`
-                  }}
-                </span>
-                <span
-                  v-else
-                  class="text-justify"
-                >
-                  {{ photo.title.replace('accusamus', 'soy un crack') }}
-                </span>
-                <span class="text-justify">{{ photo.id }}</span>
-                <span class="text-justify">
-                  {{ photo.id % 2 === 0 ? ' Es par' : ' Es impar' }}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <img
+          :src="product.thumbnail"
+          style="width: 100%; height: 250px"
+          @click="$router.push({ name: 'product', params: { cualquiercosa: product.id } })"
+        />
       </div>
+    </div>
+    <div>
+      {{ $router }}
     </div>
   </div>
 </template>
 
 <style scoped>
-.title {
-  background-color: aliceblue;
-  height: 100px;
+.my-grid-system {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 20px;
 }
-
-.algo {
-  width: 250px;
+.my-container {
+  padding: 30px 50px 30px 50px;
+}
+@media only screen and (max-width: 700px) {
+  .my-grid-system {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 </style>

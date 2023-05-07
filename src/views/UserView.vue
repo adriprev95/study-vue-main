@@ -4,7 +4,8 @@ import { user } from '@/utils/users';
 
 let people = ref(user);
 
-const delUser = (id) =>  people.value = people.value.filter((product) => product.id !== id)
+const delUser = (id) =>
+  (people.value = people.value.filter((product) => product.id !== id));
 </script>
 <template>
   <div
